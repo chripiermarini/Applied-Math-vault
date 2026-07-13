@@ -54,7 +54,7 @@ Finally, one can generalise the concept of conditional expectation using the **N
 
 ##### Curse of dimensionality
 
-Nearest neighbor techniques can be extremely ineffective when the dimension of the variables is extremely high. Practically speaking, the neighbours are actually pretty far in higher dimensions. 
+Nearest neighbor techniques can be extremely ineffective when the dimension of the variables is extremely high. Practically speaking, the neighbours are actually pretty far in higher dimensions.
 
 Generally, the **curse of dimensionality** describes the phenomena that occur when analyzing and organising data in high-dimensional spaces. As the number of features or dimensions increases, the volume of the space increases exponentially. This causes data points to become extremely sparse, making distance metrics less meaningful and causing algorithms to require significantly more data and computational power to find patterns
 
@@ -76,7 +76,6 @@ These models can be easily improved, but we need to consider some **tradoffs**:
 3) Parsimony over black-box models.
 
 ##### Assessing model accuracy
-
 Given a fitted model $\hat{f}(x)$ to some training data, we would like to assess how well it performs.
 There exists a plethora of different metrics, still one of the most relevant metrics is the **Mean Squared Error**:
 
@@ -87,7 +86,6 @@ $$
 This metric works fine as penalises predictions which are far from true realizations. Still, mistakes are extremely penalised. 
 
 ##### Bias-Variance trade-offs
-
 It is possible (and extremely important to notice that) the MSE of a model can be decomposed into three main components:
 
 $$
@@ -103,3 +101,37 @@ Third component is the **variance of the irreducible error**.
 For an in-depth explanation of the Bias-Variance error please check the below screenshot from *Elements of Statistical learning*. 
 
 ![[Screenshot 2026-07-13 alle 16.47.17.png]]
+
+##### Classification task
+
+In classification tasks, the response variable is **qualitative**, meaning it is a non-numerical attribute, usually belonging to a finite number of discrete realizations.
+
+In these case of tasks, we need to define a ***Bayes optimal classifier function***, which computes, for each possible realization of the response variable, the probability that a specific realization occurs. 
+
+We can write such function assigning each probability as the following
+
+$$
+p_{k}(x) = P(Y=k|X=x), \quad k = 1,2,\dots K
+$$
+Such probabilties are also deemed *conditional class probabilties*. We want to compute the Bayes optimal classifier as the following:
+
+$$
+C(x) = j \text{ if } p_{j}(x) = \text{max}\{p_{1}(x), p_{2}(x) \dots, p_{K}(x)\} 
+$$
+The $C(x)$ function assigns then the class of a given input associated with the highest probability. 
+
+In classification task we can also use a ***Nearest neighbors averaging*** algorithm, but it suffers by the *curse of dimensionality* similarly as the regression task example. As soon as the dimension of input space grows larger and larger, the validity of the algorithm breaks down as the procedure is not *local* anymore.
+
+We measure the performance of the classifier model using the **misclassification rate of error**, i.e. the number of classification mistakes given the input examples:
+
+$$
+\text{Err}_{\hat{C}} = Avg(\mathbb{I}[y_{i} \neq \hat{C}(x)])
+$$
+
+We now look at a graphical representation of the K-nearest neighbors procedure in two dimensions. The black curve represent the *contour*.
+
+![[Screenshot 2026-07-13 alle 22.38.44.png|697]]
+
+The choice of the number of K nearest neighbors is part of the tuning of the model.
+
+![[Screenshot 2026-07-13 alle 22.42.56.png]]
