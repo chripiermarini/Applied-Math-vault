@@ -1,3 +1,7 @@
-Personal repository containing notes on Machine Learning.
+This is a personal folder containing all my personal notes regarding Machine Learning, following religiously the [Introduction to Statistical Learning course](https://www.youtube.com/watch?v=LvySJGj-88U&list=PLoROMvodv4rPP6braWoRt5UCXYZ71GZIQ) and book from Hastie/Tibshirani.
 
-Currently focusing on the course 'Introduction to Statistical Learning', possibly moving then to Deep Learning and other related ML subfields.
+In the following, I will put some hyperllinks referring to the main chapters of the book.
+
+1) [[Introduction to the course]]
+2) [[Foundations of Statistical learning]]
+3) 
