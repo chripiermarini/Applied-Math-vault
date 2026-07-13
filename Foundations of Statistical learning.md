@@ -113,11 +113,13 @@ We can write such function assigning each probability as the following
 $$
 p_{k}(x) = P(Y=k|X=x), \quad k = 1,2,\dots K
 $$
+
 Such probabilties are also deemed *conditional class probabilties*. We want to compute the Bayes optimal classifier as the following:
 
 $$
 C(x) = j \text{ if } p_{j}(x) = \text{max}\{p_{1}(x), p_{2}(x) \dots, p_{K}(x)\} 
 $$
+
 The $C(x)$ function assigns then the class of a given input associated with the highest probability. 
 
 In classification task we can also use a ***Nearest neighbors averaging*** algorithm, but it suffers by the *curse of dimensionality* similarly as the regression task example. As soon as the dimension of input space grows larger and larger, the validity of the algorithm breaks down as the procedure is not *local* anymore.
