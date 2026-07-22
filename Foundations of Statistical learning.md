@@ -1,7 +1,7 @@
 Let's explore a business problem in which we want to analyze the relationship between the Sales and advertising medium:
 
 $$
-y \approx f(medium)
+Sales \approx f(medium)
 $$
 
 Given our input, we can model the phenomenon as
@@ -12,7 +12,7 @@ $$
 
 where $\epsilon$ is the **irreducible error**/deviation made in the measurement.
 
-Our goal is to define a practical function $\hat{f}$ which approximates with a good level of precision the original $f$. Of course, two questions arise in this setting:
+Our goal is to define a practical function $\hat{f}$ which approximates with a good level of precision the original $f$. Of course, two questions arie in this setting:
 
 1) Is there an **ideal** $f$? 
 2) If we are trying to perform **prediction** (i.e. being able to predict the most likely value of the realization $y$ given an input data point $x$), what is a good value of $f(x)$?
@@ -54,7 +54,7 @@ Finally, one can generalise the concept of conditional expectation using the **N
 
 ##### Curse of dimensionality
 
-Nearest neighbor techniques can be extremely ineffective when the dimension of the variables is extremely high. Practically speaking, the neighbours are actually pretty far in higher dimensions.
+Nearest neighbor techniques can be ineffective when the dimension of the variables is extremely high. Practically speaking, the neighbours are actually farer in higher dimensions.
 
 Generally, the **curse of dimensionality** describes the phenomena that occur when analyzing and organising data in high-dimensional spaces. As the number of features or dimensions increases, the volume of the space increases exponentially. This causes data points to become extremely sparse, making distance metrics less meaningful and causing algorithms to require significantly more data and computational power to find patterns
 

@@ -4,4 +4,5 @@ In the following, I will put some hyperllinks referring to the main chapters of 
 
 1) [[Introduction to the course]]
 2) [[Foundations of Statistical learning]]
-3) 
+3) [[Linear Regression]]
+4) [[Classification]]
