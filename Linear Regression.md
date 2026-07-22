@@ -13,6 +13,7 @@ The usual structure is the same:
 $$ 
 \hat{y} = \hat{\beta_{0}} + \hat{\beta_{1}}x
 $$
+
 The estimation of the optimal parameters is done by the means of the minimisation of the *Residual Sum of Errors*. 
 
 The formulas for the coefficients are closed (**please look at the book**).
@@ -44,6 +45,7 @@ In this test, the t-statistic is the following:
 $$
 \frac{\hat{\beta_{1}} - 0}{SE(\hat{\beta_{1}})} 
 $$
+
 Then we compare this value against the values of table of the t-distribution, considering the degrees of freedom and the confidence. 
 
 Using that, we are able to compute the p-value. The p-value has multiple different possible definitions, but in simple terms is the probability of seeing, through any data, a value of $|t|$ or larger, given the null hypothesis being true. 
