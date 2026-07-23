@@ -177,6 +177,15 @@ Whatever it is the algorithm that we apply for classification, we still need to 
 
 #### Quadratic Discriminant Analysis
 
+The form used for the discriminant analysis might be generalised instead of just using Gaussian densities.  Furthermore, it might be possible that when using multivariate Gaussian distribution, the covariance matrix is not equal to all the classes. We might have a situation in which the covariance $\Sigma_{k}$ is actually class dependant. In those instance, we have the called *quadratic discriminant analysis*, where the name comes from the fact that in the discriminant score function the quadratic term does not cancel out.
+
+Unfortunately, if the number of variable is too high, LDA/QDA can break down.  That is why is almost always used the Naive Bayes classifier. 
 #### Naive Bayes
 
-### Add part here on Generalized linear models??
+One last difference also between the classical LDA technique is assuming that the predictors within each class are independent from each other. This means that the covariance matrix is actually diagonal (all zeros apart from the diagonal/variance values). In this case, the probability density is the following:
+
+$$
+f_{k}(x) = \prod_{j=1}^{p} f_{jk}(x_{j})
+$$
+This classifier is then called *Naive Bayes*.
+### Add part here on Generalized linear models (if ever required)
