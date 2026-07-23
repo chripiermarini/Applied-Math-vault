@@ -51,7 +51,7 @@ If we had more than two classes, we can also build a linear function for each cl
 
 $$p(Y = k \mid X) = \frac{e^{\beta_{0,k} + \beta_{1,k} X_1 + \beta_{2,k} X_2 + \dots + \beta_{p,k} X_p}}{\sum_{l=1}^{K} e^{\beta_{0,l} + \beta_{1,l} X_1 + \beta_{2,l} X_2 + \dots + \beta_{p,l} X_p}}$$
 
-This function is also called the *softmax* function, and the corresponding model is called multinomial logistic regression.
+This function is also called the *softmax* function, and the corresponding model is called *multivariate logistic regression*.
 
 Note that each class k now has its own set of coefficients, beta_{0,k}, beta_{1,k}, up to beta_{p,k}, rather than a single shared set of coefficients as in the two-class case. The denominator sums the exponentiated linear function over all K classes, which ensures that the probabilities across all classes sum to 1:
 
@@ -59,4 +59,124 @@ $$\sum_{k=1}^{K} p(Y = k \mid X) = 1$$
 
 For K = 2 classes, this formula reduces exactly to the standard logistic regression formula, since one class's coefficients can be fixed at zero as a reference category without loss of generality.
 
-(Start again from lecture 4.5)
+If we wanted to compute the model a multiclass (i.e. $K > 2$) classification model, we might want to use another extension of the logistic model, which is the *multinomial logistic regression*. For this model, we select one class for baseline (e.g. $K$), and we define 
+
+$$p(Y = k \mid X = x) = \frac{e^{\beta_{0,k} + \beta_{1,k} X_1 + \beta_{2,k} X_2 + \dots + \beta_{p,k} X_p}}{1+ \sum_{l=1}^{K-1} e^{\beta_{0,l} + \beta_{1,l} X_1 + \beta_{2,l} X_2 + \dots + \beta_{p,l} X_p}}$$
+for $k = 1, \dots, K - 1$, and 
+
+$$p(Y = K \mid X = x) = \frac{1}{1+ \sum_{l=1}^{K-1} e^{\beta_{0,l} + \beta_{1,l} X_1 + \beta_{2,l} X_2 + \dots + \beta_{p,l} X_p}}$$
+By selecting one specific class as a baseline, we are able to prove that 
+
+$$\log \left( \frac{\Pr(Y = k \mid X = x)}{\Pr(Y = K \mid X = x)} \right) = \beta_{k0} + \beta_{k1} x_1 + \dots + \beta_{kp} x_p$$
+
+where class $K$ is treated as the baseline (reference) class, and the log-odds of belonging to class $k$ relative to class $K$ is modeled as a linear function of the predictors, for $k = 1, \dots, K-1$.
+
+###### Linear discriminant analysis
+
+We now follow a different approach to perform these classification tasks. Logistic regression involves modeling the probability of class membership directly using the logistic function. The logistic function may suffer from some drawbacks in certain classification settings (e.g. very unstable parameter estimates when the classes are well separated).
+
+Additionally, if the predictors X are approximately normally distributed within each class, another approach may be more accurate.
+
+This approach, called Linear Discriminant Analysis, follows a generative approach. First, we assume that, within each class k, the distribution of the predictors is normal, with a class-specific mean $\mu_k$ and a variance $\sigma^2$ shared across all classes, giving an assigned density function $f_k(x)$. Furthermore, we also know the prior probabilities $\pi_k$ of a point belonging to class k a priori.
+
+We can then use Bayes' theorem to infer the posterior probability of a specific point belonging to class k, and classify the point by assigning it to the class with the highest posterior probability (the Bayes classifier).
+
+Please let's look at the Gaussian density form
+
+$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)$$
+
+If we plug in the *Bayes formula*, we get a rather complex formula:
+
+$$p_k(x) = \frac{\pi_k \dfrac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}\left(\frac{x - \mu_k}{\sigma}\right)^2}}{\sum_{l=1}^{K} \pi_l \dfrac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}\left(\frac{x - \mu_l}{\sigma}\right)^2}}$$
+
+where:
+
+- $\pi_k$ is the prior probability that an observation belongs to class $k$
+- $\mu_k$ is the mean of the predictor $x$ for class $k$
+- $\sigma$ is the common standard deviation, shared across all $K$ classes (this shared-variance assumption is the key simplification in LDA)
+- the numerator is the density of class $k$ weighted by its prior
+- the denominator sums this same quantity over all $K$ classes, ensuring the probabilities across classes sum to 1
+
+
+Taking the log of $p_k(x)$ and dropping terms that are common across all classes (since they don't affect which class is largest), we obtain the *discriminant function*:
+
+$$\delta_k(x) = x \cdot \frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{2\sigma^2} + \log(\pi_k)$$
+
+The classifier assigns an observation $x$ to the class $k$ that maximizes $\delta_k(x)$:
+
+$$\hat{y} = \arg\max_{k} \; \delta_k(x)$$
+
+Notice that $\delta_k(x)$ is a linear function of $x$, which is exactly why the method is called linear discriminant analysis: the decision boundary between any two classes $k$ and $l$ is obtained by setting $\delta_k(x) = \delta_l(x)$, which results in a linear equation in $x$.
+
+Since $\pi_k$, $\mu_k$, and $\sigma^2$ are unknown in practice, they must be estimated from the training data before $\delta_k(x)$ can be computed.
+
+1) Estimating the prior, $\hat{\pi}_k$
+
+$$\hat{\pi}_k = \frac{n_k}{n}$$
+
+where $n_k$ is the number of training observations belonging to class $k$, and $n$ is the total number of observations. This is simply the proportion of observations in class $k$.
+
+2) Estimating the class mean, $\hat{\mu}_k$
+
+$$\hat{\mu}_k = \frac{1}{n_k} \sum_{i: y_i = k} x_i$$
+
+This is the average of $x$ over only the observations belonging to class $k$.
+
+3) Estimating the shared variance, $\hat{\sigma}^2$
+
+$$\hat{\sigma}^2 = \frac{1}{n - K} \sum_{k=1}^{K} \sum_{i: y_i = k} \left( x_i - \hat{\mu}_k \right)^2$$
+
+This is a pooled (weighted average) estimate of variance across all $K$ classes, reflecting the assumption that all classes share the same variance. Dividing by $n - K$ rather than $n$ corrects for the degrees of freedom lost from estimating $K$ separate class means.
+
+4) Plugging the estimates into the discriminant function
+
+$$\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}^2} - \frac{\hat{\mu}_k^2}{2\hat{\sigma}^2} + \log(\hat{\pi}_k)$$
+
+The classifier then assigns $x$ to the class $k$ that maximizes $\hat{\delta}_k(x)$.
+
+##### Linear discriminant analysis with more than one variable ($p>1$)
+
+The mathematics becomes slightly complicated in a sense, by the most important part is that variance is substituted by the covariance matrix.
+
+Nonetheless, even with the introduction of the covariance matrix instead of the simple variance, the *discriminant scores* still remain linear w.r.t. the input data $x$. 
+
+The important thing to make sure it is noticed in this instance is that when there are $K$ classes, the linear discriminant analysis plots the points in a $K-1$ dimensional space. Then, it classifies each point to the closes centroid. Hence, the LDA can be viewed exactly in a $K-1$ dimensional plot.
+##### Confusion matrix and ROC curve
+
+Whatever it is the algorithm that we apply for classification, we still need to assess the performances of the model. In order to do so, we might want to use some specific techniques.
+
+1) *Accuracy*: straightforward proportion of the number of cases which have been correctly classified. 
+
+2) *Confusion matrix*: a tabular display of 2x2 dimensions in the binary case, where we display the record counts by their predicted and actual classification status. In simpler terms, we state how many true positives and negatives the model properly exposed, as well as the false positives (predicted positives but actually negatives) and false negatives we have. From this table, other metrics can be then displayed:
+
+	![[Screenshot 2026-07-23 alle 11.03.44.png|626]]
+
+	In this table, other measurements are also displayed, which can be of variable importance. Specifically, it might be very important to correctly specify which data belongs to a 'rare class' (i.e. a class in which we a smaller amount of samples w.r.t the others).
+	
+3) *Precision, Recall/Sensitivity and Specificity*: those are three specific metrics, which are complementary to each other, yet providing different perspectives of the model performances. 
+	
+	Precision is computed as $$\frac{TP}{TP + FP}$$ and it measures the *accuracy* of predicting a positive (capacity of filtering out what is not positive).
+	
+	Recall is computed as $$\frac{TP}{TP + FN}$$ and it measures the strength of predicting a positive (capacity of correctly recognizing what is positive out of noise).
+	
+	Finally, *specificity* is computed as $$\frac{TN}{TN + FP}$$ and it measures the accuracy of predicting a *negative* (capacity of correctly recognizing what is negative out of noise).
+	
+3) *ROC curve*: *Receiving Operating Characteristics* curve, it plots in 2D graph the curve which represent of how much specificity of the model we sacrifice in order to have an improvement in the recall/sensitivity. We would like to have curve which is as high as possible. 
+ 
+	![[Screenshot 2026-07-23 alle 12.11.57.png]]
+	
+	In order to build such curve, the procedure is as follows: 
+	
+	1) First, we fit the training data in the classifier, and then use our model on test data, which will provide us with the expected probability for each point to belong to class 1. 
+	2) Then, we sort the data points based on such probabilities (from 0 to 1). 
+	3) We select a threshold value, $t$, that will increase from 0 to 1. All the data points which probability is higher than $t$ are labeled positives, negative otherwise. 
+	4) We compute the Recall and the Specificity for that particular t. This becomes a point in the graph.
+	5) We finally repeat such procedure for all values from $t=0$ to $t=1$. 
+	
+	Finally, we can also summarize the visualization results into a practical statistic, which is the *AUC*, Area Under the Curve, as the integral of the curve between 0 and 1. 
+
+#### Quadratic Discriminant Analysis
+
+#### Naive Bayes
+
+### Add part here on Generalized linear models??
