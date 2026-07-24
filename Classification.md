@@ -18,7 +18,7 @@ The closed form of the logistic regression function is the following:
 $$
 p(x) = \frac{e^{(\beta_0 + \beta_1x)}}{1 + e^{(\beta_0 + \beta_1x)}} 
 $$
-From a numerical standpoint, $p(x)$ is actually a probability (i.e. $0 < p(x) > 1$). 
+From a numerical standpoint, $p(x)$ is actually a probability (i.e. $0 < p(x) < 1$). 
 
 ##### Estimating the regression coefficients in a classification task
 
@@ -134,6 +134,8 @@ $$\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}^2} - \frac{\hat{\m
 
 The classifier then assigns $x$ to the class $k$ that maximizes $\hat{\delta}_k(x)$.
 
+*Please remember*: if we wanted to compare the main structure of the two models, remember that the function we will use for logistic is actually the logistic regression function, in the case of LDA, we are using the discriminant function actually!
+
 ##### Linear discriminant analysis with more than one variable ($p>1$)
 
 The mathematics becomes slightly complicated in a sense, by the most important part is that variance is substituted by the covariance matrix.
@@ -188,4 +190,10 @@ $$
 f_{k}(x) = \prod_{j=1}^{p} f_{jk}(x_{j})
 $$
 This classifier is then called *Naive Bayes*.
-### Add part here on Generalized linear models (if ever required)
+
+#### Appendix
+
+Useful concepts from statistics:
+
+1) *Prior and posterior probabilities*: these are important concepts since they are related to the internal theory of classification models. Let's assume we want to draw some conclusions to $y$ given an evidence $x$. Let's then assume that there exists a relationship between $x$ and $y$ (i.e. they are not independent). We can then use the *Bayes' theorem*: $$P(y \mid x) = \frac{P(x \mid y) \, P(y)}{P(x)}$$
+	Let's define one by one all the elements of the above probability equation. The first element is the evidence $P(x)$, while the *prior* probability is $P(y)$. The name comes from the fact that it represents the probability of $y$ before observing the evidence $x$. We then have the *likelihood* $p(y \mid x)$ , which represents the relationship between the evidence $x$ and the value we want to compute $y$. Finally, we have the *posterior* probability $p(y \mid x)$, which is the probability of the event y after the evidence $x$.
