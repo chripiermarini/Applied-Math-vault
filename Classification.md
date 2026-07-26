@@ -20,6 +20,19 @@ p(x) = \frac{e^{(\beta_0 + \beta_1x)}}{1 + e^{(\beta_0 + \beta_1x)}}
 $$
 From a numerical standpoint, $p(x)$ is actually a probability (i.e. $0 < p(x) < 1$). 
 
+Contrary to a common simplification, logistic regression **does** have assumptions — they're just different (and generally weaker) than those of LDA:
+
+- **Linearity in the log-odds**: the model assumes $\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X$ is linear in the predictors, not that $Y$ is linear in $X$ directly.
+
+- **Independent observations** — often overlooked, but important. In time-series-like data (e.g. daily financial returns), this assumption can be violated due to autocorrelation.
+
+- **Limited multicollinearity** among predictors (checkable via VIF, Variance Inflation Factor).
+
+- **No assumption of normality** on the predictors — this is the real point of contrast with LDA.
+
+
+Once the model is fit, the focus shifts to correctly computing and interpreting the standard classification metrics: **confusion matrix, precision, recall, specificity, F1-score, ROC curve, and AUC**.
+
 ##### Estimating the regression coefficients in a classification task
 
 In a similar fashion of the regression task, we compute the optimal coefficients by minimizing a predefined objective function, the *likelihood function*:
@@ -182,6 +195,8 @@ Whatever it is the algorithm that we apply for classification, we still need to 
 The form used for the discriminant analysis might be generalised instead of just using Gaussian densities.  Furthermore, it might be possible that when using multivariate Gaussian distribution, the covariance matrix is not equal to all the classes. We might have a situation in which the covariance $\Sigma_{k}$ is actually class dependant. In those instance, we have the called *quadratic discriminant analysis*, where the name comes from the fact that in the discriminant score function the quadratic term does not cancel out.
 
 Unfortunately, if the number of variable is too high, LDA/QDA can break down.  That is why is almost always used the Naive Bayes classifier. 
+
+QDA relaxes the shared-covariance assumption of LDA, estimating a separate covariance matrix per class. This adds flexibility (a quadratic decision boundary instead of a linear one), but also adds more parameters to estimate — which can lead to overfitting/noisier estimates when there isn't much real signal in the data, potentially resulting in worse generalization (e.g., lower test-set AUC) despite a better fit on training data.
 #### Naive Bayes
 
 One last difference also between the classical LDA technique is assuming that the predictors within each class are independent from each other. This means that the covariance matrix is actually diagonal (all zeros apart from the diagonal/variance values). In this case, the probability density is the following:
@@ -190,10 +205,3 @@ $$
 f_{k}(x) = \prod_{j=1}^{p} f_{jk}(x_{j})
 $$
 This classifier is then called *Naive Bayes*.
-
-#### Appendix
-
-Useful concepts from statistics:
-
-1) *Prior and posterior probabilities*: these are important concepts since they are related to the internal theory of classification models. Let's assume we want to draw some conclusions to $y$ given an evidence $x$. Let's then assume that there exists a relationship between $x$ and $y$ (i.e. they are not independent). We can then use the *Bayes' theorem*: $$P(y \mid x) = \frac{P(x \mid y) \, P(y)}{P(x)}$$
-	Let's define one by one all the elements of the above probability equation. The first element is the evidence $P(x)$, while the *prior* probability is $P(y)$. The name comes from the fact that it represents the probability of $y$ before observing the evidence $x$. We then have the *likelihood* $p(y \mid x)$ , which represents the relationship between the evidence $x$ and the value we want to compute $y$. Finally, we have the *posterior* probability $p(y \mid x)$, which is the probability of the event y after the evidence $x$.
