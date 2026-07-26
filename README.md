@@ -7,7 +7,7 @@ In the following, I will put some hyperllinks referring to the main chapters of 
 3) [[Linear Regression]]
 4) [[Classification]]
 
-Another important part of learning is practice what you are studying. Please also use the [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf).
+Another important part of learning is practice what you are studying. Please also use the [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf). [[Technical notes from exercises]] are available as well.
 
 For Gio 23rd, I will finish the classification section of ISLR, and then in the evening I will try to build something in code. Using either Pytorch/statsmodel, etc.
 
