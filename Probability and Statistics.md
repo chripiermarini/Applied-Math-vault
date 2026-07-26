@@ -18,9 +18,11 @@ Relevant for [[Classification]] tasks:
 
 3) *Equal variance across classes (homoschedasticity*: this is the assumption that specifically distinguishes LDA (shared covariance) from QDA (class-specific covariance). It is **not** the same thing as comparing kurtosis across classes — kurtosis (tail heaviness relative to variance) and variance (spread) are distinct properties. The correct test here is:
 
-|Test|Null hypothesis|Notes|
-|---|---|---|
-|**Levene's test**|All groups have equal variance|Robust alternative to Bartlett's test|
-|**Brown-Forsythe** (Levene with `center='median'`)|All groups have equal variance|More robust to outliers/heavy tails — preferable when normality is in doubt|
-|**Bartlett's test**|All groups have equal variance|Very sensitive to non-normality; only reliable if data is close to Gaussian|
-  
+| Test                                               | Null hypothesis                | Notes                                                                       |
+| -------------------------------------------------- | ------------------------------ | --------------------------------------------------------------------------- |
+| **Levene's test**                                  | All groups have equal variance | Robust alternative to Bartlett's test                                       |
+| **Brown-Forsythe** (Levene with `center='median'`) | All groups have equal variance | More robust to outliers/heavy tails — preferable when normality is in doubt |
+| **Bartlett's test**                                | All groups have equal variance | Very sensitive to non-normality; only reliable if data is close to Gaussian |
+|                                                    |                                |                                                                             |
+3) *Multivariate Gaussian distribution*: this distribution starts from the simple univariate Normal Gaussian distribution: $$\frac{1}{\sqrt{2\pi \sigma^{2}}} exp\left({-\frac{(x-\mu)^{2}}{2\sigma^2}}\right)$$
+	But it is actually applied on a vector of $p$ predictors, each with a mean $\mu$ and variance $\sigma^{2}$. The normal multivariate distribution benefits from multiple properties, the main ones being the marginal distributions being normal, diagonal covariance matrix meaning independence of the variables, and condition distributions being normal themselves.

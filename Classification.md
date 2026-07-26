@@ -205,3 +205,5 @@ $$
 f_{k}(x) = \prod_{j=1}^{p} f_{jk}(x_{j})
 $$
 This classifier is then called *Naive Bayes*.
+
+*Careful*: Naive Bayes assumes that all the predictors are independent one another. By predictors we mean that the features of each observation are actually independent, not the single observations. 
