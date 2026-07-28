@@ -1,4 +1,3 @@
-#### K-Nearest Neighbors (classification)
 
 $K$-nearest neighbors can be also easily applied in this context. KNN classifies a point based on the **distance** to other observations (typically Euclidean distance). This means the **scale** of each variable directly affects the classification outcome — variables with larger numeric ranges dominate the distance calculation, regardless of their actual predictive importance.
 

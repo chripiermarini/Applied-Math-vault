@@ -1,4 +1,3 @@
-###### Linear discriminant analysis
 
 We now follow a different approach to perform these classification tasks. Logistic regression involves modeling the probability of class membership directly using the logistic function. The logistic function may suffer from some drawbacks in certain classification settings (e.g. very unstable parameter estimates when the classes are well separated).
 

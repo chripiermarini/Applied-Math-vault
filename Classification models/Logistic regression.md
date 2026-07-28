@@ -1,4 +1,3 @@
-#### Logistic regression
 
 The logistic regression formula comes from a simple transformation of the linear regression model called *logit transformation*:
 

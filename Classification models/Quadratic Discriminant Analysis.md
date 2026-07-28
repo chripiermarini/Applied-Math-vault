@@ -1,4 +1,3 @@
-#### Quadratic Discriminant Analysis
 
 The form used for the discriminant analysis might be generalised instead of just using Gaussian densities.  Furthermore, it might be possible that when using multivariate Gaussian distribution, the covariance matrix is not equal to all the classes. We might have a situation in which the covariance $\Sigma_{k}$ is actually class dependant. In those instance, we have the called *quadratic discriminant analysis*, where the name comes from the fact that in the discriminant score function the quadratic term does not cancel out.
 

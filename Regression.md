@@ -30,7 +30,7 @@ $$
 This is supposed to have the true value of the parameter, with a given confidence of $95\%$ .
 
 *Disclaimer*: the term **2** in front of the standard error values is taken by assuming a generic number of degrees of freedom, and a confidence of 95%. If one want to be extremely precise, please recall the theory of confidence intervals: the values must be taken from the table of values from the t-Student distribution, taking $n-2$ degrees of freedom and the associated $t_{\alpha/2}$ score. We are using $\alpha/2$ because the test is bilateral.
-##### Hypothesis testing
+##### Hypothesis testing of the linear regression paramerers
 
 Standard errors can be used in order to perform formal *hypothesis tests* on the coefficents. One of the most common hypothesis testing that can be carried out is the *null hypothesis*:
 

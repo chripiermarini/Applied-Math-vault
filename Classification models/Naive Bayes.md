@@ -1,4 +1,3 @@
-#### Naive Bayes
 
 One last difference also between the classical LDA technique is assuming that the predictors within each class are independent from each other. This means that the covariance matrix is actually diagonal (all zeros apart from the diagonal/variance values). In this case, the probability density is the following:
 
