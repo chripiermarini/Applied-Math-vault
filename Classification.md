@@ -15,6 +15,14 @@ The models that are practically used in classification are the following:
 
 In order to assess whether a classification model is working properly or not, we have multiple tools at disposal. Specifically, notes on [[Performances of classification models]] are available.
 
+###### Class imbalance and complete separation
+
+When performing a classification tasks, there might arise two possible issue tied to the features of the dataset itself:
+
+1) *Class imbalance*: the sizes of the two groups are drastically different (e.g. 90/10), and hence the model might just provide as response the class with the biggest size since, statistically, it is the one that appears most of the time. In order to check if model works correctly, it is important to check if precision/recall of the smallest size class is acceptable.
+
+2) *Complete separation*: it occurs when a predictor (or combination of predictors) almost perfectly separates the two classes — regardless of how balanced the classes are. When this happens, the logistic regression coefficients (the slope, not just the intercept) can grow arbitrarily large ('explode'), because the model keeps pushing predicted probabilities toward 0 or 1 to better fit the near-perfect separation, and the likelihood keeps improving without ever reaching a finite optimum.
+
 ---
 #####  Study notes:
 

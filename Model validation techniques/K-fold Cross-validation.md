@@ -18,3 +18,9 @@ Cross-validation is a form of procedure which can be mistakenly applied in multi
 2) To apply correctly cross validation, we need to separate the validation set *before* selecting the best predictors. If the choice relies on correlation, we first select the subset of predictors from training set using correlation, and only after we have selected such predictors we filter the unwanted ones from the validation set itself.
 
 The point is to avoid to select the predictors using also the validation set. This would lead to unfair high performance of the model when computing CV error.
+
+---- 
+##### Study notes
+
+1) One interesting application of the K-cross validation in classification entails the summing of the confusion matrices computed using the distinct folds, i.e. for each validation fold we compute the confusion matrix, and then we sum all the matrices together. From that one, we compute precision and recall.
+2) 

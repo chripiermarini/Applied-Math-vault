@@ -5,4 +5,6 @@ Scikit-learn is de facto library for classical machine learning using tabular da
 
 1) The `.predict()` method takes as an input a 2D pandas dataframe. This means that you cannot provide a Pandas Series as an input to this methods, but rather you have to take a 2D dataframe with dimensions *(n,1)*. In order to do so, you have to provide a list to the pandas dataframe containing only one element, the name of the column you want to slice. 
 2) Both the train test split functions, the average model functions and the metrics functions are actually inside `scikit-learn`;
-3) Careful about the `train_test_split` method: the order is always `x_train, x_test,y_train, y_test`
+3) Careful about the `train_test_split` method: the order is always `x_train, x_test,y_train, y_test`.
+4) If you want to use categorical predictors or variables into our model, it is important to encode them as 0/1 instead of Yes7No. The same does not apply for the response variable, as sklearn automatically converts it to numerical values.
+5) Please check how the 'Kfold' object works in Python from sklearn.

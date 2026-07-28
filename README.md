@@ -1,15 +1,17 @@
 This is a personal folder containing all my personal notes regarding Machine Learning, following religiously the [Introduction to Statistical Learning course](https://www.youtube.com/watch?v=LvySJGj-88U&list=PLoROMvodv4rPP6braWoRt5UCXYZ71GZIQ) and book from Hastie/Tibshirani.
 
-In the following, I will put some hyperllinks referring to the main chapters of the book.
+In the following, I will put some hyperlinks referring to the main chapters of the book.
 
 1) [[Introduction to the course]]
 2) [[Foundations of Statistical learning]]
 3) [[Regression]]
 4) [[Classification]]
+5) [[Model validation]]
+6) [[Linear model selection and regularization]]
 
 Another important part of learning is practice what you are studying. Please also use the [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf). [[Technical notes from exercises]] are available as well.
 
-For Gio 23rd, I will finish the classification section of ISLR, and then in the evening I will try to build something in code. Using either Pytorch/statsmodel, etc.
+For Gio 23rd, I will finish the classification section of ISLR, and then in the evening I will try to build something in code. Using either PyTorch/Statsmodel, etc.
 
 Be mindful that this is only the preparation for the job at LIST. What to do now is to get ML as much as you can until Aug 1st, then it will be time to start with predictive analytics specifically, while starting to build a toy digital twin. Throw in also some System design if needed.
 

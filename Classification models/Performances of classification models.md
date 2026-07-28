@@ -12,9 +12,9 @@ Whatever it is the algorithm that we apply for classification, we still need to 
 	
 3) *Precision, Recall/Sensitivity and Specificity*: those are three specific metrics, which are complementary to each other, yet providing different perspectives of the model performances. 
 	
-	Precision is computed as $$\frac{TP}{TP + FP}$$ and it measures the *accuracy* of predicting a positive (capacity of filtering out what is not positive).
+	Precision is computed as $$\frac{TP}{TP + FP}$$ and it measures the trustworthiness of a positive prediction — out of all instances the model labeled as positive, how many actually are. It reflects the model's ability to avoid false alarms (i.e., not mislabeling negatives as positive). This means that if the model predicts Yes, there is a high probability that the prediction is correct.
 	
-	Recall is computed as $$\frac{TP}{TP + FN}$$ and it measures the strength of predicting a positive (capacity of correctly recognizing what is positive out of noise).
+	Recall is computed as $$\frac{TP}{TP + FN}$$ and it measures the completeness of positive predictions — out of all instances that are actually positive, how many the model successfully identified. It reflects the model's ability to avoid missing true positives (i.e., not mislabeling positives as negative). This means that if an instance is truly Yes, there is a corresponding probability that the model will actually catch it.
 	
 	Finally, *specificity* is computed as $$\frac{TN}{TN + FP}$$ and it measures the accuracy of predicting a *negative* (capacity of correctly recognizing what is negative out of noise).
 	
