@@ -102,6 +102,13 @@ For an in-depth explanation of the Bias-Variance error please check the below sc
 
 ![[Screenshot 2026-07-13 alle 16.47.17.png]]
 
+On a practical note, please see the following:
+
+- The bias error is an *error from erroneous assumptions in the learning algorithm*. In generale the more parameter a model has, the higher its flexibility, which means that it can fit better the training set. The lower its flexibility, the worse the training performances , and this is observed by the *higher bias* (*underfitting*, as the model flexibility is not enough to learn the actual pattern of the data). 
+
+- The *variance* error arises from the sensitivity of the model to small fluctuations of the training set. High variance might be observed if the model parameters change greatly when fitting a new dataset. The higher the variance, the higher the probability that the model fits the random noise in the training data (entailing *overfitting*).
+
+*Main take*: these two sources of error move in opposite directions as model flexibility changes: increasing flexibility reduces bias but increases variance, and vice versa. The goal is not to minimize either one in isolation, but to find the flexibility level that minimizes their combined effect on total prediction error.
 ##### Classification task
 
 In classification tasks, the response variable is **qualitative**, meaning it is a non-numerical attribute, usually belonging to a finite number of discrete realizations.
