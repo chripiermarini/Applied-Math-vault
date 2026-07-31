@@ -8,6 +8,7 @@ In the following, I will put some hyperlinks referring to the main chapters of t
 4) [[Classification]]
 5) [[Model validation]]
 6) [[Linear model selection and regularization]]
+7) [[Tree-based methods]]
 
 Another important part of learning is practice what you are studying. Please also use the [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf). [[Technical notes from exercises]] are available as well.
 
