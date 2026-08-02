@@ -18,4 +18,34 @@ By observing the data, we might see that we can also divide the predictor space 
 
 Being top down, it starts from the root of the nose and then successively splits the predictor space, being greedy it always select the best option for the current state, not the future one.
 
-VIDEO 8.2
+*On a graphical side,* it is mandatory to split the full region into a partition of boxes that cannot overlap. 
+##### Pruning a tree to avoid overfitting
+
+It is trivial to understand that a very large tree (meaning, a tree with an high number of terminal nodes) might easily overfit the data, as we can reach a situation in which each data point has its own terminal node. In order to avoid this, the process is to create such large tree and then prune it back to state in which we have subtree that can generalize enough without overfitting. 
+
+The employed technique is called *Cost complexity pruning* and its use regards the minimization of the below function:
+
+$$
+\sum_{m=1}^{|T|}\sum_{i:x_i \in R_m} \left(y_i - \hat{y}_i \right)^{2} + \alpha|T|,
+$$
+where have $T$ as the set of terminal nodes, and $\alpha$ the penalising parameter (similar to the *Lasso* regularization term, which tries to minimize the number of non-zero terminal nodes). Furthermore, $R_m$ is the $m$-th region in which we divide the data. Again, in order to select the optimal $\alpha$, we use cross-validation.
+##### Classification trees
+
+Just like regression tasks, we use recursive binary splitting to grow a classification tree. Still, in these kind of tasks we cannot use RSS, and hence we rely on the *classification error rate* criteria.
+
+The classification error rate computes the fraction of the training observation in a region that do not belong to the most common class, meaning 
+
+$$
+E = 1 - max_{k}(\hat{p}_{mk})
+$$
+where $p_{mk}$ represents the proportion of training observation in. the $m$-th region that belong in the $k$-th class. Unfortunately though classification error is not sufficiently sensitive for tree-growing, and in practice two other metrics are preferred.
+
+We usually use the Gini index and the cross-entropy values. 
+
+**Gini index** $$G = \sum_{k=1}^{K} \hat{p}_{mk}(1 - \hat{p}_{mk})$$ The Gini index is a measure of total variance across the $K$ classes: it takes on small values when all $\hat{p}_{mk}$ are close to 0 or 1 (i.e. the node is pure, dominated by a single class), and it is largest when classes are evenly mixed. For this reason it's often referred to as a measure of node **purity**. 
+
+**Cross-entropy** $$D = -\sum_{k=1}^{K} \hat{p}_{mk} \log(\hat{p}_{mk})$$ Cross-entropy behaves numerically very similarly to the Gini index: since $0 \le \hat{p}_{mk} \le 1$, the term $-\hat{p}_{mk}\log(\hat{p}_{mk})$ is non-negative and approaches 0 as $\hat{p}_{mk}$ approaches 0 or 1. So $D$ takes small values for pure nodes, just like $G$. 
+
+**Practical notes** - Both Gini and cross-entropy are more sensitive to node purity than the classification error rate, which makes them preferable when *growing* the tree (choosing splits). - When *pruning* the tree, all three criteria (error rate, Gini, cross-entropy) can be used, but classification error rate is typically preferred if prediction accuracy of the final tree is the goal. 
+
+Video 8.3, minuto 5:17
