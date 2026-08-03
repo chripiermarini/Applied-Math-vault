@@ -11,7 +11,6 @@ In the following, I will put some hyperlinks referring to the main chapters of t
 7) [[Tree-based methods]]
 
 Another important part of learning is practice what you are studying. Please also use the [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf). [[Technical notes from exercises]] are available as well.
-
 ##### Update of July 31st
 
 Just finished chapter 6. Plan is to skip chapter 7 (as not interested into GAMs), and then focus mainly only on chapter 8 (tree-based models) and chapter 9 (SVMs). Finish these two types of lectures, then study a bit of theory of prob/stats as a refresher, and also exercise. 
