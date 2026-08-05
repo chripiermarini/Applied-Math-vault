@@ -1,6 +1,5 @@
-##### Bagging
 
-This technique uses both the bootstrap method to generate simulated data, and decision trees to provide the response prediction.  
+This technique uses both the bootstrap method to generate simulated data, and decision trees to provide the response prediction.  The term 'bagging' comes from '*bootstrap aggregating*'.
 
 The statistical principle involved is that the variance of the average of a specific statistic is smaller than the variance of the component of statistic themselves. As an example, if we had multiple observations $Z_i$ with variance $\sigma^{2}$ , the average of the observations would have variance equal to $\sigma^{2}/n$. The important assumption that is violated in bagging is that the observations should always be independent, which is not the case for bootstrapped datasets. In fact, knowing that they are generated from the same dataset, the bootstrapped datasets are inevitably correlated. The variance reduction exists then, even though it is smaller than expected.
 

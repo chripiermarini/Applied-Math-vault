@@ -75,3 +75,9 @@ By selecting one specific class as a baseline, we are able to prove that
 $$\log \left( \frac{\Pr(Y = k \mid X = x)}{\Pr(Y = K \mid X = x)} \right) = \beta_{k0} + \beta_{k1} x_1 + \dots + \beta_{kp} x_p$$
 
 where class $K$ is treated as the baseline (reference) class, and the log-odds of belonging to class $k$ relative to class $K$ is modeled as a linear function of the predictors, for $k = 1, \dots, K-1$.
+
+---
+
+##### Personal notes
+
+On *hyperparameter tuning*:
