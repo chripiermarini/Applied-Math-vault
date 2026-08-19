@@ -164,28 +164,3 @@ def parent_process(env):
 `env.all_of([...])` is equivalent to yielding on each process in sequence, but more readable with many sub-processes and doesn't impose an order — if `sub_process_2` finished before `sub_process_1`, it would still work correctly.
 
 SimPy also provides `env.any_of([...])` for the opposite case: proceed as soon as **at least one** sub-process finishes (a "race condition" pattern — e.g. the first of several alternative routes to reach a destination wins).
-
-##### Real-time inference feature
-
-The ML model needs to be embedded into a stream of events, and hence
-consumed in real time. To support this, we build a system that ingests
-events as they occur, one at a time — not in batches.
-
-During training, feature engineering operates over the entire historical
-dataset at once (batch processing) — this is how the current pipeline
-works, and remains appropriate offline.
-
-For real-time inference, the flow is different: as soon as a single
-`departed_from_origin` event occurs, the required features (origin,
-destination, hour of day, is_rush) are extracted directly from that one
-event — no batching, no waiting for other events, no need to look at the
-package's full history. That single event is immediately passed to the
-already-loaded model's `predict` method, producing a delay-risk prediction
-for that specific package right away.
-
-##### Notes for system design
-
-1) Functional and non-functional requisites
-2) Diagram of components
-3) Key decision and why (Architecture Decision Records)
-4) Explicit trade offs.

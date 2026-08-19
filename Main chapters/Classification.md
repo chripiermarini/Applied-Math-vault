@@ -1,6 +1,6 @@
 Classification tasks arise when we want to build a model to compute/predict a response that can come from a finite, discrete set (e.g. "red", "blue", "green" - which can be mapped to 1,2 or 3 for example). 
 
-In this instance, as seen in the [[Introduction to the course]], we would want to build a model that, given a out-of-sample value, provides the probabilities of that new sample to fall into each of the class. Rationally, we would choose the class with the highest probability associated. 
+In this instance, as seen in the [[Introduction to the Statistical learning course]], we would want to build a model that, given a out-of-sample value, provides the probabilities of that new sample to fall into each of the class. Rationally, we would choose the class with the highest probability associated. 
  ![[Screenshot 2026-07-22 alle 16.28.21.png]]
 
 In this instance, linear regression could be not useful, as the linear model can provide a negative value as response. Also, linear regression does not work properly even for multi-class classification (i.e. more than two possible responses). For these reasons, we actually use the so-called *Logistic regression*.
