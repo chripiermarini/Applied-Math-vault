@@ -16,5 +16,3 @@ For ***Gaussian Mixture Models***:
 1) In this case as well, the number of assumed distribution is an hyperparameter that needs to be tuned.
 2) In this case, we are not using neither the inertia nor the *silhouette*, but we can use directly the loglikelihood (rather, the negative loglikelihood since the argument of the logarithm is usually less than 0).
 3) Regions in this case are not straight defined, but rather they have a specific ellipsoid, with mean as the center and the eigenvectors of the covariance being the axes.
-
-Good work so far.
