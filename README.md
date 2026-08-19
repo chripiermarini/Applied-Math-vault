@@ -26,8 +26,9 @@ The Machine Learning section is religiously built upon the [Introduction to Stat
 
 Here I gather notes regarding the use of libraries, and in general, practical tips and findings from study.
 
-1. [[Technical notes from exercises]] 
-2. [[Technical notes from unsupervised learning]]
+1. [[Technical notes from machine learning exercises]] 
+2. [[Technical notes from unsupervised learning exercises]]
+3. [[Technical notes from simulation exercises]]
 
 ----
 #### List of resources
