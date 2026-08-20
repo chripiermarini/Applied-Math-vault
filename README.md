@@ -7,7 +7,7 @@ The Machine Learning section is religiously built upon the [Introduction to Stat
 
 1) [[Introduction to the Statistical learning course]]
 2) [[Foundations of Statistical learning]]
-3) [[Regression]]
+3) [[Linear regression]]
 4) [[Classification]]
 5) [[Model validation]]
 6) [[Model selection]]
@@ -15,7 +15,6 @@ The Machine Learning section is religiously built upon the [Introduction to Stat
 ###### Mathematical optimization
 
 1) [[Elements of multi-objective optimization]]
-
 ###### Reinforcement learning
 
 1) [[Reinforcement Learning overview]]
@@ -45,9 +44,14 @@ Here I gather notes regarding coding best practices, use of libraries, and in ge
 ###### Machine learning
 
 1) [An introduction to statistical learning](https://www.statlearning.com/)
-2) [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf)
+2) [The Elements of Statistical Learning](https://www.sas.upenn.edu/~fdiebold/NoHesitations/BookAdvanced.pdf)
+3) [Hands-on Machine learning book](http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf)
 ###### Reinforcement learning
 
 1) [Reinforcement learning: an introduction (2nd Ed.)](http://incompleteideas.net/book/the-book-2nd.html)
 2) _Dynamic Programming and Optimal Control_ by Bertsekas
+
+###### Coding notes and best practices
+
+1) [The missing Semester of your CS education](https://missing.csail.mit.edu/)
 
