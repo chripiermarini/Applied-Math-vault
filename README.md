@@ -12,7 +12,6 @@ The Machine Learning section is religiously built upon the [Introduction to Stat
 5) [[Model validation]]
 6) [[Model selection]]
 7) [[Tree-based methods]]
-
 ###### Mathematical optimization
 
 1) [[Elements of multi-objective optimization]]
@@ -24,11 +23,12 @@ The Machine Learning section is religiously built upon the [Introduction to Stat
 
 ###### Technical notes
 
-Here I gather notes regarding the use of libraries, and in general, practical tips and findings from study.
+Here I gather notes regarding coding best practices, use of libraries, and in general, practical tips and findings from study.
 
-1. [[Technical notes from machine learning exercises]] 
+1. [[Technical notes from general machine learning exercises]] 
 2. [[Technical notes from unsupervised learning exercises]]
 3. [[Technical notes from simulation exercises]]
+4. [[Agentic coding]]
 
 ----
 #### List of resources

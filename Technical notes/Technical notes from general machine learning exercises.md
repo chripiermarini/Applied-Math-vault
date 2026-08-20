@@ -18,7 +18,7 @@ Scikit-learn is de facto library for classical machine learning using tabular da
 2) Both the train test split functions, the average model functions and the metrics functions are actually inside `scikit-learn`;
 3) Careful about the `train_test_split` method: the order is always `x_train, x_test,y_train, y_test`. An important caveat to always remember when dealing with classification is that sample spaces must be equally distributed to make the classification training fruitful (if training does not have enough 1-labeled points, we might not be able to classify at all).
 4) If you want to use categorical predictors or variables into our model, it is important to encode them as 0/1 instead of Yes/No. The same does not apply for the response variable, as sklearn automatically converts it to numerical values.
-###### Cross validation
+##### Cross validation
 
 Please check how the 'Kfold' object works in Python from *sklearn*.
 ##### One hot encoding

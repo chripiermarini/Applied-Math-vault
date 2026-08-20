@@ -30,5 +30,20 @@ Usually both LLMs and agent harness are run on the cloud and the user receives o
 A great use-case to make sure the coding agent has worked properly is to write down unit tests that we want our code to pass successfully. If it does not pass, we query the agent to check the code and fix it.
 
 It is possible to allow the agent to `git commit`, and then check the full history of commits to see what an agent has done to the codebase. Agents are particularly good at understanding entire codebases, and summarize them.
+##### Advanced features:
 
-(Resume video at 41:36).
+*Reusable prompts*: the possibility to provide the same prompt multiple times, depending on the use-case (e.g. reviewing a code review).
+
+*Parallel agents*: models can take 20-ish minutes, hence it might be useful to use multiple parallel agents at the same time, on the same codebase. In order to do so, we can use the command `git worktree`to set up multiple branches.
+
+*MCPs*: Model Context Protocol, that allow to connect the coding harness with other tools, (e.g. Notion MCP connector, that allows Claude to access read and modify Notion files).
+
+*Context management*: context is important as the agent takes the limited context window as input for the next response. Hence one can *clear* the context window, *rewinding* some steps of the conversation to keep the context focused, *compact* the context in order to reduce the current context window while maintaining the most important information from previous conversation
+
+*llms.txt*: if one wants to use specific additional documents at inference time, and the LLM does not have the knowledge for that doc, one can add either in the context or in the `llm.txt` location. This allows to have amore compacted context.
+
+*AGENTS.md*: markdown file in which we can store the information/context about a repository in which the file lives. In this way, we can just provide such files instead of having the agent review every time the same repo. For example, Claude uses `CLAUDE.md` to put the context of the repo.
+
+*Skills*: the agents.md might be extremely big as well, and this reduces the context window inevitably. Instead of supplying all the information as context in the AGENTS.md file, one can list to the agent upfront the list of skills and tools it can use immediately.
+
+*Subagents*: when an agent is provided with a big complex task, it usually breaks it down into multiple subtasks and assigns each one of them to *subagents* in order to solve those. This is good because each subagent focuses only on one task, has its own context, and provide to the parent agent only the relevant information, in order not to pollute the parent agent context.
